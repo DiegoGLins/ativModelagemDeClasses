@@ -24,10 +24,10 @@ const abastecimento3 = new FuelPump({tipo: "etanol"}, 3.57)
 const abastecimento4 = new FuelPump({tipo: "gasolina"}, 4.89)
 
 
-abastecimento2.alterarQuantidadeCombustivel(20, {tipo: "gasolina"})
+abastecimento2.alterarQuantidadeCombustivel(20, {tipo: "etanol"})
 console.log(abastecimento2)
 
-abastecimento3.alterarQuantidadeCombustivel(20,{tipo: "etanol"})
+abastecimento3.alterarQuantidadeCombustivel(80,{tipo: "etanol"})
 console.log(abastecimento3)
 
 abastecimento1.abastecerPorLitro(60,{tipo: "gasolina"})

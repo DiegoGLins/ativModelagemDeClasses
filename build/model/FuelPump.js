@@ -90,12 +90,10 @@ class FuelPump {
     }
     alterarQuantidadeCombustivel(novaQtdCombustivelBomba, tipoCombustivel) {
         if (tipoCombustivel.tipo === "gasolina") {
-            let totalCombustivelBomba = novaQtdCombustivelBomba;
-            this.totalBombaGasolina = totalCombustivelBomba;
+            this.totalBombaGasolina = novaQtdCombustivelBomba;
         }
         else {
-            let totalCombustivelBomba = novaQtdCombustivelBomba;
-            this.totalBombaEtanol = totalCombustivelBomba;
+            this.totalBombaEtanol = novaQtdCombustivelBomba;
         }
     }
 }
