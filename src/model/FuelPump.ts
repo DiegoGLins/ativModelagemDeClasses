@@ -4,7 +4,7 @@ enum PriceFuel {
 }
 
 interface TypeFuel {
-  tipo: "gasolina" | "etanol"
+  tipo: "gasolina" | "etanol";
 }
 
 class FuelPump {
@@ -30,7 +30,9 @@ class FuelPump {
       if (totalBombaGasolina < abastecimentoGasolina) {
         totalBombaGasolina;
         console.log(
-          `A quantidade de combustivel de: ${totalBombaGasolina.toFixed(2)} litros na bomba, \n é insuficiente para abastecimento`
+          `A quantidade de combustivel de: ${totalBombaGasolina.toFixed(
+            2
+          )} litros na bomba, \n é insuficiente para abastecimento`
         );
         return;
       } else {
@@ -53,7 +55,9 @@ class FuelPump {
       if (totalBombaEtanol < abastecimentoEtanol) {
         totalBombaEtanol;
         console.log(
-          `A quantidade de combustivel de: ${totalBombaEtanol.toFixed(2)} litros na bomba, \n é insuficiente para abastecimento`
+          `A quantidade de combustivel de: ${totalBombaEtanol.toFixed(
+            2
+          )} litros na bomba, \n é insuficiente para abastecimento`
         );
         return;
       } else {
@@ -76,7 +80,9 @@ class FuelPump {
       if (quantidadeCombustivel > totalBombaGasolina) {
         totalBombaGasolina;
         console.log(
-          `A quantidade de combustivel de: ${totalBombaGasolina.toFixed(2)}litros na bomba, \n é insuficiente para abastecimento`
+          `A quantidade de combustivel de: ${totalBombaGasolina.toFixed(
+            2
+          )}litros na bomba, \n é insuficiente para abastecimento`
         );
         return;
       } else {
@@ -103,7 +109,9 @@ class FuelPump {
       const totalBombaEtanol = parseFloat(this.totalBombaEtanol.toFixed(2));
       if (totalBombaEtanol < quantidadeCombustivel) {
         console.log(
-          `A quantidade de combustível de: ${totalBombaEtanol.toFixed(2)}litros na bomba,\n é insifuciente para abastecimento`
+          `A quantidade de combustível de: ${totalBombaEtanol.toFixed(
+            2
+          )}litros na bomba,\n é insifuciente para abastecimento`
         );
         return;
       } else {
@@ -128,8 +136,13 @@ class FuelPump {
     this.valorLitro = novoValor;
   }
 
-  alterarCombustivel(novoCombustivel: any) {
+  alterarCombustivel(novoCombustivel: TypeFuel) {
     this.tipoCombustivel = novoCombustivel;
+    if (novoCombustivel.tipo === "gasolina") {
+      this.valorLitro = PriceFuel.gasolina;
+    } else {
+      this.valorLitro = PriceFuel.etanol;
+    }
   }
 
   alterarQuantidadeCombustivel(
