@@ -87,10 +87,17 @@ class FuelPump {
     }
     alterarCombustivel(novoCombustivel) {
         this.tipoCombustivel = novoCombustivel;
+        if (novoCombustivel.tipo === "gasolina") {
+            this.valorLitro = PriceFuel.gasolina;
+        }
+        else {
+            this.valorLitro = PriceFuel.etanol;
+        }
     }
     alterarQuantidadeCombustivel(novaQtdCombustivelBomba, tipoCombustivel) {
         if (tipoCombustivel.tipo === "gasolina") {
             this.totalBombaGasolina = novaQtdCombustivelBomba;
+            return;
         }
         else {
             this.totalBombaEtanol = novaQtdCombustivelBomba;
