@@ -14,7 +14,7 @@ class FuelPump {
 
   constructor(
     protected tipoCombustivel: TypeFuel,
-    protected valorLitro: PriceFuel.gasolina | PriceFuel.etanol
+    protected valorLitro:  PriceFuel.gasolina | PriceFuel.etanol
   ) {
     this.tipoCombustivel = tipoCombustivel;
     this.valorLitro = valorLitro;
@@ -24,7 +24,7 @@ class FuelPump {
   }
 
   abastecerPorValor(valor: number, tipoCombustivel: TypeFuel) {
-    if (tipoCombustivel.tipo === "gasolina") {
+    if (tipoCombustivel.tipo? "gasolina" : PriceFuel.gasolina) {
       const abastecimentoGasolina = valor / PriceFuel.gasolina;
       const totalBombaGasolina = parseFloat(this.totalBombaGasolina.toFixed(2));
       if (totalBombaGasolina < abastecimentoGasolina) {
@@ -49,7 +49,7 @@ class FuelPump {
       }
       return abastecimentoGasolina;
     }
-    if (tipoCombustivel.tipo === "etanol") {
+    if (tipoCombustivel.tipo? "etanol" : PriceFuel.etanol) {
       const abastecimentoEtanol = valor / PriceFuel.etanol;
       const totalBombaEtanol = parseFloat(this.totalBombaEtanol.toFixed(2));
       if (totalBombaEtanol < abastecimentoEtanol) {
@@ -75,7 +75,7 @@ class FuelPump {
   }
 
   abastecerPorLitro(quantidadeCombustivel: number, tipoCombustivel: TypeFuel) {
-    if (tipoCombustivel.tipo === "gasolina") {
+    if (tipoCombustivel.tipo? "gasolina" : PriceFuel.gasolina) {
       const totalBombaGasolina = parseFloat(this.totalBombaGasolina.toFixed(2));
       if (quantidadeCombustivel > totalBombaGasolina) {
         totalBombaGasolina;
@@ -105,7 +105,7 @@ class FuelPump {
         return abastecimentoGasolina;
       }
     }
-    if (tipoCombustivel.tipo === "etanol") {
+    if (tipoCombustivel.tipo? "gasolina" : PriceFuel.gasolina) {
       const totalBombaEtanol = parseFloat(this.totalBombaEtanol.toFixed(2));
       if (totalBombaEtanol < quantidadeCombustivel) {
         console.log(
@@ -133,7 +133,8 @@ class FuelPump {
   }
 
   alterarValor(novoValor: number) {
-    this.valorLitro = novoValor;
+    this.valorLitro = parseFloat(novoValor.toFixed(2));
+    return console.log(`O valor do litro foi alterado para: R$ ${novoValor.toFixed(2)} reais`)
   }
 
   alterarCombustivel(novoCombustivel: TypeFuel) {
@@ -151,9 +152,10 @@ class FuelPump {
   ) {
     if (tipoCombustivel.tipo === "gasolina") {
       this.totalBombaGasolina = novaQtdCombustivelBomba;
-      return;
+      return console.log(`A quantidade de combustível da bomba foi alterada para: ${novaQtdCombustivelBomba} litros`)
     } else {
       this.totalBombaEtanol = novaQtdCombustivelBomba;
+      return console.log(`A quantidade de combustível da bomba foi alterada para: ${novaQtdCombustivelBomba} litros`)
     }
   }
 }
